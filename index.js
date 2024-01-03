@@ -23,6 +23,15 @@ app.get('/api/hello', function (req, res) {
   res.json({ greeting: 'hello API' });
 });
 
+app.get('/api', (req, res) => {
+  const date = new Date();
+
+  res.json({
+    unix: date.valueOf(),
+    utc: date.toUTCString(),
+  });
+});
+
 app.get('/api/:timestamp', (req, res) => {
   const { timestamp } = req.params;
   const regexUnix = /\d{5,}/;
